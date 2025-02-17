@@ -3,12 +3,16 @@ import { Server } from 'socket.io';
 import { createServer } from 'http';
 import jwt from 'jsonwebtoken';
 
-const baseUrl = 'http://localhost:3001'; // Our Express API endpoints
+const prodcution = "production";  
+const prodServer = 'http://3.26.2.125:3001';
+const prodClient = ''
+
+const baseUrl = prodcution === 'prodcution' ? prodServer : 'http://localhost:3001'; // Our Express API endpoints
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:3000', // Allow all origins
+    origin: prodcution === 'production' ? prodClient : 'http://localhost:3000', // Allow all origins
     credentials: true,
   }
 });
