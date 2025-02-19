@@ -12,7 +12,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: prodcution === 'production' ? prodClient : 'http://localhost:3000', // Allow all origins
+    origin: '*', // Allow all origins
     credentials: true,
   }
 });
